@@ -2,8 +2,9 @@ import React from 'react';
 import './HomeSection.css';
 import Box from './Box';
 import profilePic from '../images/profile-picture.jpeg'
+import PropTypes from 'prop-types';
 
-const HomeSection = () => {
+const HomeSection = ({ setActiveTab }) => {
   return (
     <div className='flex grid-rows-3 gap-0'>
       <Box className="grid-cols-2 bg-white">
@@ -20,12 +21,17 @@ const HomeSection = () => {
     <li>Experienced in building scalable web apps with ReactJS, Node.js, Spring Boot, and ExpressJS</li>
     <li>Developed and optimized internal tools, improving workflow efficiency and reducing processing time by 45%</li>
     <li>Applied machine learning for sentiment analysis, boosting classification accuracy by 30%</li>
-    <li>Published research on Sign Language Recognition using Machine Learning</li>
+    <li>Published research paper on Sign Language Recognition using Machine Learning</li>
     <li>Certified in Python for Data Science, Database Management, and Cloud Computing</li>
   </ul>
 </p>
       <br/>
-      <button className="more-btn">More About Me</button>
+      <button
+        className="more-btn"
+        onClick={() => setActiveTab('about')}
+      >
+        More About Me
+      </button>
     </section>
       </Box>
     
@@ -36,6 +42,10 @@ const HomeSection = () => {
     </Box>
     </div>
   );
+};
+
+HomeSection.propTypes = {
+  setActiveTab: PropTypes.func.isRequired,
 };
 
 export default HomeSection;

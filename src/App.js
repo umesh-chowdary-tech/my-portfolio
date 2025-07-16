@@ -18,7 +18,7 @@ function App() {
           <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
           <div className="flex-1 overflow-hidden hide-scrollbar">
             <div className="p-6">
-              {activeTab === 'home' && <HomeSection />}
+              {activeTab === 'home' && <HomeSection setActiveTab={setActiveTab} />}
               {activeTab === 'about' && <AboutSection />}
               {activeTab === 'resume' && <Resume/>}
               {activeTab === 'portfolio' && <PortfolioSection />}
