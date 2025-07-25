@@ -46,9 +46,9 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" data-test-id="testimonials-section">
       <h2 className="text-3xl font-bold border-b pb-2">TESTIMONIALS</h2>
-      <form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded-lg mb-6 space-y-2">
+      <form onSubmit={handleSubmit} className="bg-gray-100 p-2 sm:p-4 rounded-lg mb-4 sm:mb-6 space-y-2">
   <input
     type="text"
     name="name"
@@ -99,8 +99,8 @@ const TestimonialsSection = () => {
     Submit Testimonial
   </button>
 </form>
-<div className="h-[400px] overflow-y-auto pr-2">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div className="max-h-[80vh] md:max-h-[400px] overflow-y-auto pr-2">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-6">
     {testimonials.map((item) => (
   <div key={item.id} className="bg-white p-6 rounded-lg shadow-md relative">
     <button

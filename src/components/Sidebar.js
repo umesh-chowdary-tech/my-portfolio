@@ -2,35 +2,32 @@ import { Home, User, FileText, MessageSquare, Phone } from 'react-feather';
 import profilePic from '../images/profile-picture.jpeg'
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
+import React, { useState } from 'react';
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
-  // Sidebar is collapsed when on 'home' tab
+  // Mobile sidebar toggle
+  const [mobileOpen, setMobileOpen] = useState(false);
+  // Collapsed on home for md+ screens
   const collapsed = activeTab === 'home';
 
   const navItems = [
     { name: 'home', icon: Home, label: 'HOME' },
     { name: 'about', icon: User, label: 'ABOUT ME' },
     { name: 'resume', icon: FileText, label: 'RESUME' },
-    // { name: 'portfolio',icon:Home, label: 'PORTFOLIO' },
     { name: 'testimonials', icon: MessageSquare, label: 'TESTIMONIALS' },
     { name: 'contact', icon: Phone, label: 'CONTACT' },
   ];
 
-  return (
-    <div className="flex flex-col h-full">
-      <div
-        className={`transition-all duration-300 flex flex-col items-center bg-[#FDB813] p-6 ${
-          collapsed ? 'w-20 md:w-20' : 'w-full md:w-64'
-        } flex-1`}
-      >
+  // Sidebar content as a function for reuse
+  const sidebarContent = (
+    <>
+      <div className="flex-1 w-full flex flex-col items-center">
         {!collapsed && (
-          <>
-            <img
-              src={profilePic}
-              alt="Profile"
-              className="w-24 h-24 rounded-full mb-6"
-            />
-          </>
+          <img
+            src={profilePic}
+            alt="Profile"
+            className="w-24 h-24 rounded-full mb-6"
+          />
         )}
         <nav className="space-y-4 w-full flex flex-col items-center">
           {navItems.map((item) => (
@@ -45,7 +42,10 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                     : 'text-white hover:bg-white/10'}
                   ${collapsed ? 'justify-center' : ''}
                 `}
-                onClick={() => setActiveTab(item.name)}
+                onClick={() => {
+                  setActiveTab(item.name);
+                  setMobileOpen(false); // close sidebar on mobile after selection
+                }}
               >
                 <item.icon className="h-5 w-5" />
                 {!collapsed && (
@@ -66,7 +66,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
       </div>
       {/* Social icons at the bottom */}
       {!collapsed && (
-        <div className={`flex flex-row items-center w-full p-4 space-x-4 justify-start bg-[#FDB813]`}>
+        <div className={`flex flex-row items-center w-full p-4 space-x-4 justify-start bg-[#FDB813] mt-auto`}>
           <a href="https://www.linkedin.com/in/umesh-chowdary-anubrolu/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="w-6 h-6 text-blue-700 hover:text-blue-900" />
           </a>
@@ -81,7 +81,52 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           </a>
         </div>
       )}
-    </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Hamburger for mobile only */}
+      <div className="md:hidden" data-test-id="sidebar-mobile-toggle">
+        <button
+          className="fixed top-4 left-4 z-30 bg-[#FDB813] text-white p-2 rounded shadow-lg focus:outline-none"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open sidebar"
+          style={{ display: mobileOpen ? 'none' : 'block' }}
+        >
+          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+        </button>
+      </div>
+      {/* Overlay and sidebar for mobile */}
+      {mobileOpen && (
+        <div data-test-id="sidebar-mobile-overlay">
+          <div
+            className="fixed inset-0 bg-black bg-opacity-40 z-20 md:hidden"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div className="fixed top-0 left-0 h-full w-64 bg-[#FDB813] shadow-lg z-30 p-6 flex flex-col" data-test-id="sidebar-mobile">
+            <button
+              className="self-end mb-4 text-gray-700 hover:text-black"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close sidebar"
+            >
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+            </button>
+            {sidebarContent}
+          </div>
+        </div>
+      )}
+      {/* Sidebar for md+ screens */}
+      <div className="hidden md:flex flex-col h-full rounded-tl-lg rounded-bl-lg bg-[#FDB813]" data-test-id="sidebar-desktop-wrapper">
+        <div
+          className={`transition-all duration-300 flex flex-col items-center p-6 ${
+            collapsed ? 'w-20 justify-center h-full' : 'w-64' 
+          } flex-shrink-0 md:h-[700px]`} data-test-id="sidebar-desktop"
+        >
+          {sidebarContent}
+        </div>
+      </div>
+    </>
   );
 };
 
