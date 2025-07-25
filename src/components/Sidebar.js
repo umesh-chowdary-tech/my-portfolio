@@ -16,6 +16,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
     { name: 'resume', icon: FileText, label: 'RESUME' },
     { name: 'testimonials', icon: MessageSquare, label: 'TESTIMONIALS' },
     { name: 'contact', icon: Phone, label: 'CONTACT' },
+    { name: 'upload', icon: FileText, label: 'RESUME UPLOAD' },
   ];
 
   // Sidebar content as a function for reuse

@@ -6,6 +6,7 @@ import PortfolioSection from './components/ProtfoiloSection';
 import TestimonialsSection from './components/Testimonials';
 import ContactSection from './components/ContactSection';
 import  Resume  from './components/Resume';
+import ResumeUpload from './components/ResumeUpload';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -24,6 +25,7 @@ function App() {
               {activeTab === 'portfolio' && <PortfolioSection />}
               {activeTab === 'testimonials' && <TestimonialsSection />}
               {activeTab === 'contact' && <ContactSection />}
+              {activeTab === 'upload' && <ResumeUpload />}
             </div>
           </div>
         </div>
