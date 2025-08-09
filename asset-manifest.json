@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/my-portfolio/static/css/main.2c916c4a.css",
+    "main.js": "/my-portfolio/static/js/main.8b782e4d.js",
+    "static/media/Umesh_Anubrolu_Resume (1)_page-0001.jpg": "/my-portfolio/static/media/Umesh_Anubrolu_Resume (1)_page-0001.d4965d744d162f7d6542.jpg",
+    "static/media/backgroundImage.jpg": "/my-portfolio/static/media/backgroundImage.2cc0ad2869ffa8fb12cd.jpg",
+    "static/media/profile-picture.jpeg": "/my-portfolio/static/media/profile-picture.cb0f996f43060ede8822.jpeg",
+    "index.html": "/my-portfolio/index.html",
+    "main.2c916c4a.css.map": "/my-portfolio/static/css/main.2c916c4a.css.map",
+    "main.8b782e4d.js.map": "/my-portfolio/static/js/main.8b782e4d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c916c4a.css",
+    "static/js/main.8b782e4d.js"
+  ]
+}
