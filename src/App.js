@@ -11,14 +11,14 @@ function App() {
   const [activeTab, setActiveTab] = useState('home');
 
   return (
-    <div className="max-h-screen flex items-center justify-center p-4 bg-[url('../public/images/backgroundImage.jpg')] scrollbar-none">
+    <div className="min-h-screen flex items-center justify-center p-2 sm:p-4 bg-[url('../public/images/backgroundImage.jpg')] scrollbar-none" data-test-id="app-root">
 
-      <div className="w-full max-w-7xl bg-white rounded-lg shadow-lg   ">
-        <div className="flex flex-col md:flex-row h-[700px]">
+      <div className="w-full max-w-7xl bg-white rounded-lg shadow-lg" data-test-id="main-container">
+        <div className="flex flex-col md:flex-row min-h-[80vh] md:min-h-[700px]" data-test-id="main-flex">
           <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-          <div className="flex-1 overflow-hidden hide-scrollbar">
-            <div className="p-6">
-              {activeTab === 'home' && <HomeSection />}
+          <div className="flex-1 overflow-hidden hide-scrollbar h-full min-h-0">
+            <div className="p-4 sm:p-6">
+              {activeTab === 'home' && <HomeSection setActiveTab={setActiveTab} />}
               {activeTab === 'about' && <AboutSection />}
               {activeTab === 'resume' && <Resume/>}
               {activeTab === 'portfolio' && <PortfolioSection />}
