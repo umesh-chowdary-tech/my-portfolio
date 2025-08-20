@@ -11,11 +11,11 @@ const HomeSection = ({ setActiveTab }) => {
       <div className="hidden lg:block absolute top-0 bottom-0 right-0 w-1/3 h-full bg-gradient-to-b from-gray-100 to-gray-300 z-0" data-test-id="home-section-image-bg" />
       {/* Image on right, vertically centered, only on lg+ */}
       <div className="hidden lg:flex flex-col items-center justify-center h-full w-1/3 z-10" data-test-id="home-section-image-lg">
-        <img src={profilePic} alt="Profile" className="profile-img w-32 h-32 sm:w-40 sm:h-40 lg:w-56 lg:h-56 object-cover rounded-full" data-test-id="home-section-profile-img" />
+        <img src={profilePic} alt="Umesh Chowary Anubrolu's profile picture" className="profile-img w-32 h-32 sm:w-40 sm:h-40 lg:w-56 lg:h-56 object-cover rounded-full" data-test-id="home-section-profile-img" />
       </div>
       {/* Image for mobile/tablet (stacked or side) */}
       <div className="flex-shrink-0 flex justify-center items-center w-full md:w-auto md:pl-8 lg:hidden z-10" data-test-id="home-section-image">
-        <img src={profilePic} alt="Profile" className="profile-img w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 object-cover rounded-full" data-test-id="home-section-profile-img" />
+        <img src={profilePic} alt="Umesh Chowary Anubrolu's profile picture" className="profile-img w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 object-cover rounded-full" data-test-id="home-section-profile-img" />
       </div>
       <div className="flex-1 flex flex-col justify-center items-start w-full md:w-auto z-10" data-test-id="home-section-content">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Hi There! </h1>

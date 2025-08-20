@@ -32,7 +32,7 @@ const Resume = () => {
             <div className="flex justify-center items-center w-full" data-test-id="resume-section-image-wrapper">
                 <img 
                     src={resumeImg} 
-                    alt="Resume" 
+                    alt="Umesh Chowary Anubrolu's Resume" 
                     className="w-full max-w-md h-auto object-contain rounded shadow" 
                     style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
                     data-test-id="resume-section-image"
