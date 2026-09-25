@@ -5,11 +5,11 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const ContactSection = () => {
   return (
-    <div className="space-y-8 mt-12 md:mt-0" data-test-id="contact-section">
+    <div className="space-y-8" data-test-id="contact-section">
       <div data-test-id="contact-section-header">
-        <h2 className="text-3xl font-bold border-b pb-2">CONTACT</h2>
+        <h2 className="section-title">CONTACT</h2>
         <div className="max-w-md mx-auto text-center space-y-4 px-2 sm:px-4" data-test-id="contact-section-content">
-          <h3 className="text-2xl font-bold text-[#FDB813]">Let's Connect & Collaborate!</h3>
+          <h3 className="mt-6 text-2xl font-bold text-amber-600 dark:text-[#FDB813]">Let's Connect & Collaborate!</h3>
           <p className="text-gray-700 dark:text-gray-300 text-base">
             I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Reach out directly or connect with me on social platforms!
           </p>
@@ -20,7 +20,7 @@ const ContactSection = () => {
               title="Call Me"
             >
               <div className="w-14 h-14 rounded-full bg-[#FDB813] flex items-center justify-center group-hover:bg-[#fbbf24] transition shadow-lg">
-                <Phone className="h-7 w-7 text-white" />
+                <Phone className="h-7 w-7 text-gray-900" aria-hidden="true" />
               </div>
               <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">+91 7981589800</span>
             </a>
@@ -30,7 +30,7 @@ const ContactSection = () => {
               title="Email Me"
             >
               <div className="w-14 h-14 rounded-full bg-[#FDB813] flex items-center justify-center group-hover:bg-[#fbbf24] transition shadow-lg">
-                <Mail className="h-7 w-7 text-white" />
+                <Mail className="h-7 w-7 text-gray-900" aria-hidden="true" />
               </div>
               <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">jobs.umeshchowdary@gmail.com</span>
             </a>
@@ -77,7 +77,7 @@ const ContactSection = () => {
               </a>
             </div>
           </div>
-          <p className="mt-10 text-[#FDB813] font-bold text-lg tracking-wide">Thank you for visiting my portfolio!</p>
+          <p className="mt-10 text-amber-600 dark:text-[#FDB813] font-bold text-lg tracking-wide">Thank you for visiting my portfolio!</p>
         </div>
       </div>
     </div>

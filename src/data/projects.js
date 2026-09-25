@@ -11,6 +11,7 @@ const projectGroups = [
     projects: [
       {
         title: 'Agentic AI Platform',
+        caseStudy: 'agentic-ai-platform',
         category: 'Gen AI · Agents · MCP',
         period: '2025 - present',
         description:
@@ -79,6 +80,7 @@ const projectGroups = [
     projects: [
       {
         title: 'Vidhi: Legal AI for Contracts',
+        caseStudy: 'vidhi',
         category: 'Gen AI · RAG · Fine-tuning',
         period: '2026',
         description:
@@ -96,6 +98,7 @@ const projectGroups = [
       },
       {
         title: 'AI Data Migration Agent',
+        caseStudy: 'migration-agent',
         category: 'Agentic AI · Human in the loop',
         period: '2026',
         description:

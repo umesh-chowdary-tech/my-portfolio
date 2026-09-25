@@ -1,6 +1,7 @@
-# Lints, builds and publishes the site to the gh-pages branch on every push to
-# main, so the live site always matches main. It can also be run by hand from
-# the Actions tab. `npm run deploy` from a laptop still works the same way.
+# Lints, builds and smoke-tests the site, then publishes it to the gh-pages
+# branch on every push to main, so the live site always matches main. If any
+# check fails, nothing is published. It can also be run by hand from the
+# Actions tab. `npm run deploy` from a laptop still works, without the checks.
 name: Deploy to GitHub Pages
 
 on:
@@ -29,6 +30,10 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+
+      # Every page in light and dark mode, plus every link on them
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:smoke
 
       - name: Publish dist/ to gh-pages
         run: |
