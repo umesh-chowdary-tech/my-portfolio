@@ -70,7 +70,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           <a href="https://www.linkedin.com/in/umesh-chowdary-anubrolu/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="w-6 h-6 text-blue-700 hover:text-blue-900" />
           </a>
-          <a href="https://github.com/umesh-chowdary-learing" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/umesh-chowdary-tech" target="_blank" rel="noopener noreferrer">
             <FaGithub className="w-6 h-6 text-gray-800 hover:text-black" />
           </a>
           <a href="https://x.com/UChowdary23" target="_blank" rel="noopener noreferrer">

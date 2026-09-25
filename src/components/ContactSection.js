@@ -52,7 +52,7 @@ const ContactSection = () => {
                 <span className="text-xs text-gray-700 font-medium">LinkedIn</span>
               </a>
               <a
-                href="https://github.com/umesh-chowdary-learing"
+                href="https://github.com/umesh-chowdary-tech"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center space-y-2 group"

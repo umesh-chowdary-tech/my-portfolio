@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { Star, Trash2 } from 'react-feather';
+import { Star } from 'react-feather';
 import { db } from '../configs/fireBaseConfigs/config';
 import {
   collection,
   addDoc,
-  getDocs,
-  deleteDoc,
-  doc,
   onSnapshot,
   query,
   orderBy,
+  serverTimestamp,
 } from 'firebase/firestore';
 
+// Keep these in sync with the limits in firestore.rules
+const MAX_LENGTH = { name: 60, role: 60, company: 60, text: 1000 };
+
+// Old or hand-edited entries may hold a bad rating; Array(-1) would crash the list
+const starCount = (rating) => Math.max(0, Math.min(5, Math.round(Number(rating)) || 0));
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [form, setForm] = useState({ name: '', role: '', company: '', text: '', rating: 5 });
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const q = query(collection(db, "testimonials"), orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setTestimonials(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    });
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        setTestimonials(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      },
+      () => setError('Testimonials could not be loaded right now. Please check back later.')
+    );
     return unsubscribe;
   }, []);
 
@@ -31,19 +39,23 @@ const TestimonialsSection = () => {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-  if (form.name && form.text) {
-    await addDoc(collection(db, "testimonials"), {
-      ...form,
-      rating: Number(form.rating),
-      createdAt: new Date(),
-    });
-    setForm({ name: '', role: '', company: '', text: '', rating: 5 });
+  if (form.name.trim() && form.text.trim()) {
+    setError('');
+    try {
+      await addDoc(collection(db, "testimonials"), {
+        name: form.name.trim(),
+        role: form.role.trim(),
+        company: form.company.trim(),
+        text: form.text.trim(),
+        rating: Number(form.rating),
+        createdAt: serverTimestamp(),
+      });
+      setForm({ name: '', role: '', company: '', text: '', rating: 5 });
+    } catch (err) {
+      setError('Sorry, your testimonial could not be sent. Please try again.');
+    }
   }
 };
-
-  const handleDelete = async (id) => {
-    await deleteDoc(doc(db, "testimonials", id));
-  };
 
   return (
     <div className="space-y-8" data-test-id="testimonials-section">
@@ -56,6 +68,7 @@ const TestimonialsSection = () => {
     className="border p-2 rounded w-full"
     value={form.name}
     onChange={handleChange}
+    maxLength={MAX_LENGTH.name}
     required
   />
   <input
@@ -65,6 +78,7 @@ const TestimonialsSection = () => {
     className="border p-2 rounded w-full"
     value={form.role}
     onChange={handleChange}
+    maxLength={MAX_LENGTH.role}
   />
   <input
     type="text"
@@ -73,6 +87,7 @@ const TestimonialsSection = () => {
     className="border p-2 rounded w-full"
     value={form.company}
     onChange={handleChange}
+    maxLength={MAX_LENGTH.company}
   />
   <textarea
     name="text"
@@ -80,6 +95,7 @@ const TestimonialsSection = () => {
     className="border p-2 rounded w-full"
     value={form.text}
     onChange={handleChange}
+    maxLength={MAX_LENGTH.text}
     required
   />
   <label className="block">
@@ -98,18 +114,12 @@ const TestimonialsSection = () => {
   <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
     Submit Testimonial
   </button>
+  {error && <p className="text-sm text-red-600">{error}</p>}
 </form>
 <div className="max-h-[80vh] md:max-h-[400px] overflow-y-auto pr-2">
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-6">
     {testimonials.map((item) => (
   <div key={item.id} className="bg-white p-6 rounded-lg shadow-md relative">
-    <button
-      onClick={() => handleDelete(item.id)}
-      className="absolute top-2 right-2 text-red-500 hover:text-red-700"
-      title="Delete"
-    >
-      <Trash2 size={18} />
-    </button>
     <div className="mb-4">
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between">
@@ -122,7 +132,7 @@ const TestimonialsSection = () => {
             )}
           </div>
           <div className="flex items-center ml-4">
-            {[...Array(item.rating)].map((_, i) => (
+            {[...Array(starCount(item.rating))].map((_, i) => (
               <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
             ))}
           </div>
