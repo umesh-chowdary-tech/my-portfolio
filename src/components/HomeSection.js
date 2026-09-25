@@ -21,25 +21,35 @@ const HomeSection = ({ setActiveTab }) => {
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Hi There! </h1>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">I'm <span className='font-extrabold font-serif'>Umesh </span></h1>
         <p className="text-black font-semibold" data-test-id="home-section-title">
-          <span className="bg-gray-500 px-2 py-1 rounded">Full Stack Developer | Gen AI Developer</span>
+          <span className="bg-gray-500 px-2 py-1 rounded">Member Technical at ADP | Full Stack AI Engineer</span>
         </p>
         <br/>
         <ul className="list-disc list-inside mt-4 space-y-1 max-w-xxl text-gray-700 leading-relaxed text-sm sm:text-base" data-test-id="home-section-list-ul">
-          <li>Proficient in Java, Python, JavaScript, TypeScript, SQL, and MERN</li>
-          <li>Experienced in building scalable web apps with ReactJS, Node.js, Spring Boot, and ExpressJS</li>
-          <li>Developed and optimized internal tools, improving workflow efficiency and reducing processing time by 45%</li>
-          <li>Applied machine learning for sentiment analysis, boosting classification accuracy by 30%</li>
-          <li>Published research paper on Sign Language Recognition using Machine Learning</li>
-          <li>Certified in Python for Data Science, Database Management, and Cloud Computing</li>
+          <li>Member Technical at ADP India since September 2023</li>
+          <li>Architected ADP's internal multi-agent AI platform, now used by 50+ engineers</li>
+          <li>That platform took feature turnaround from about a week to about a day</li>
+          <li>Full-stack engineer on The Zone, ADP's sales platform used by ~20,000 sales reps</li>
+          <li>Builds Gen AI systems end to end: agents, MCP servers, RAG and fine-tuned models</li>
+          <li>Works in Python, TypeScript, JavaScript and Java, with React, Node.js, FastAPI and Spring Boot</li>
+          <li>AWS Certified AI Practitioner; published sign language recognition research (IJRASET 2023)</li>
         </ul>
         <br/>
-        <button
-          className="more-btn mt-2"
-          onClick={() => setActiveTab('about')}
-          data-test-id="home-section-more-btn"
-        >
-          More About Me
-        </button>
+        <div className="flex flex-wrap gap-3 mt-2">
+          <button
+            className="more-btn"
+            onClick={() => setActiveTab('about')}
+            data-test-id="home-section-more-btn"
+          >
+            More About Me
+          </button>
+          <button
+            className="more-btn more-btn-outline"
+            onClick={() => setActiveTab('projects')}
+            data-test-id="home-section-projects-btn"
+          >
+            See My Projects
+          </button>
+        </div>
       </div>
     </Box>
   );

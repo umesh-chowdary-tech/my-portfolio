@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import HomeSection from './components/HomeSection';
 import AboutSection from './components/AboutSection';
-import PortfolioSection from './components/ProtfoiloSection';
-import TestimonialsSection from './components/Testimonials';
+import ProjectsSection from './components/ProjectsSection';
 import ContactSection from './components/ContactSection';
 import  Resume  from './components/Resume';
 
@@ -21,8 +20,7 @@ function App() {
               {activeTab === 'home' && <HomeSection setActiveTab={setActiveTab} />}
               {activeTab === 'about' && <AboutSection />}
               {activeTab === 'resume' && <Resume/>}
-              {activeTab === 'portfolio' && <PortfolioSection />}
-              {activeTab === 'testimonials' && <TestimonialsSection />}
+              {activeTab === 'projects' && <ProjectsSection />}
               {activeTab === 'contact' && <ContactSection />}
             </div>
           </div>

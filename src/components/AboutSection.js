@@ -41,26 +41,27 @@ const AboutSection = () => {
       <div>
         <h2 className="text-3xl font-bold mb-1">About Me</h2>
         <p className="text-base text-gray-700 mb-1">
-          Hi, I'm <span className="font-semibold text-[#FDB813]">Umesh Anubrolu</span>, a Hyderabad-based software developer passionate about building scalable, impactful web applications.
+          Hi, I'm <span className="font-semibold text-[#FDB813]">Umesh Anubrolu</span>, a Member Technical at ADP India in Hyderabad. I build full-stack products and Gen AI systems.
         </p>
         <p className="text-sm text-gray-600">
-          I thrive on solving complex problems, driving innovation, and delivering results for startups and enterprises. My expertise spans full-stack development, workflow automation, and research in machine learning.
+          At work I build agent platforms and full-stack tools used across ADP. In my own time I build RAG apps and fine-tune open models.
         </p>
       </div>
       <div>
         <h3 className="text-lg font-semibold flex items-center gap-2 mb-1"><Users className="inline-block" /> Professional Highlights</h3>
         <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
-          <li>Associate Developer at <span className="font-semibold">ADP India</span> ({yrsOfExperience}+ yrs experience)</li>
-          <li>Led projects using <span className="font-semibold">TypeScript, Node.js, Express.js</span> (20%+ user engagement boost)</li>
-          <li>Optimized internal tools, reducing processing time by 15%</li>
-          <li>Published research on Sign Language Recognition (ML)</li>
+          <li>Member Technical at <span className="font-semibold">ADP India</span> ({yrsOfExperience}+ yrs)</li>
+          <li>Second-in-command to the Principal Architect on ADP's multi-agent AI platform, adopted by 50+ engineers</li>
+          <li>Built a Jira agent that drafts tickets from Confluence and confirms with the user before creating anything</li>
+          <li>Full-stack engineer on <span className="font-semibold">The Zone</span>, used by ~20,000 sales reps</li>
+          <li>Published sign language recognition research (IJRASET, 2023)</li>
         </ul>
       </div>
       <div className="flex flex-row flex-wrap gap-4 justify-center mt-2">
-        <HighlightCard icon={Award} label="Awards" value="2" />
-        <HighlightCard icon={Database} label="Core Skills" value="12+" />
-        <HighlightCard icon={BookOpen} label="Projects" value="8+" />
-        <HighlightCard icon={Users} label="Experience" value={`${yrsOfExperience}+ yrs`} />
+        <HighlightCard icon={Users} label="Engineers on the AI platform" value="50+" />
+        <HighlightCard icon={Target} label="Sales reps on The Zone" value="~20K" />
+        <HighlightCard icon={Award} label="Best Work Awards" value="3" />
+        <HighlightCard icon={BookOpen} label="At ADP" value={`${yrsOfExperience}+ yrs`} />
       </div>
     </div>
   );
@@ -71,25 +72,22 @@ const AboutSection = () => {
       <div>
         <h3 className="text-lg font-semibold flex items-center gap-2 mb-1"><Database className="inline-block" /> Core Skills</h3>
         <div className="flex flex-wrap">
-          <Badge>Java</Badge>
-          <Badge>Python</Badge>
-          <Badge>JavaScript</Badge>
-          <Badge>TypeScript</Badge>
-          <Badge>ReactJS</Badge>
-          <Badge>NodeJS</Badge>
-          <Badge>ExpressJS</Badge>
-          <Badge>PostgreSQL</Badge>
-          <Badge>Spring</Badge>
-          <Badge>Azure</Badge>
-          <Badge>Jest</Badge>
-          <Badge>BitBucket/GitHub</Badge>
+          {['Python', 'TypeScript', 'JavaScript', 'Java', 'React', 'Node.js', 'Express.js', 'FastAPI', 'Spring Boot',
+            'PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'Jenkins', 'MCP', 'RAG', 'LLM Fine-tuning', 'Claude APIs', 'Jest'].map((skill) => (
+            <Badge key={skill}>{skill}</Badge>
+          ))}
         </div>
       </div>
       <div>
         <h3 className="text-lg font-semibold flex items-center gap-2 mb-1"><Award className="inline-block" /> Awards & Certifications</h3>
         <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
-          <li>Certified in Python for Data Science, DBMS, and Cloud Computing</li>
-          <li>Best Student Coordinator, Merit Scholarship recipient</li>
+          <li>AWS Certified AI Practitioner (2026)</li>
+          <li>NPTEL certifications in Python for Data Science, Cloud Computing and DBMS</li>
+          <li>iClub nomination, ADP's Highest Valued Contributor recognition</li>
+          <li>Best Work Award, three times in five quarters</li>
+          <li>Golden Shining Star of the Year</li>
+          <li>Finalist, ADP Hackathon 2025</li>
+          <li>LeetCode: 200+ problems solved, rating 1550. Codeforces: Specialist, rating 1450</li>
         </ul>
       </div>
       <div>

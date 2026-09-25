@@ -1,45 +1,51 @@
-import React, { useState } from 'react';
-import resumeImg from '../images/Umesh_Anubrolu_Resume (1)_page-0001.jpg'
+import React from 'react';
+import { Download, ExternalLink, FileText } from 'react-feather';
+
+const RESUME_URL = `${process.env.PUBLIC_URL}/Umesh_Anubrolu_Resume.pdf`;
 
 const Resume = () => {
-    const [zoom, setZoom] = useState(1); // default 100%
-    const handleZoomIn = () => setZoom(z => Math.min(z + 0.2, 3));
-    const handleZoomOut = () => setZoom(z => Math.max(z - 0.2, 0.5));
-    const handleZoomInput = (e) => {
-        let value = Number(e.target.value);
-        if (isNaN(value)) value = 100;
-        value = Math.max(50, Math.min(300, value));
-        setZoom(value / 100);
-    };
-    const overflowClass = zoom === 1 ? 'overflow-hidden' : 'overflow-auto';
     return (
-        <div className={`max-h-[70vh] md:max-h-[600px] ${overflowClass} pr-2 flex flex-col items-center p-2 sm:p-4`} data-test-id="resume-section">
-            <div className="mb-2 flex gap-2 items-center" data-test-id="resume-section-zoom-controls">
-                <button onClick={handleZoomOut} className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-test-id="resume-section-zoom-out">−</button>
-                <input
-                    type="number"
-                    min={50}
-                    max={300}
-                    step={1}
-                    value={Math.round(zoom * 100)}
-                    onChange={handleZoomInput}
-                    className="w-16 px-2 py-1 border rounded text-center"
-                    data-test-id="resume-section-zoom-input"
-                />
-                <span className="font-semibold" data-test-id="resume-section-zoom-level">%</span>
-                <button onClick={handleZoomIn} className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-test-id="resume-section-zoom-in">+</button>
+        <div className="flex flex-col gap-4 mt-12 md:mt-0" data-test-id="resume-section">
+            <div className="flex flex-wrap items-end justify-between gap-3 border-b pb-2">
+                <h2 className="text-3xl font-bold">RESUME</h2>
+                <div className="flex flex-wrap gap-2" data-test-id="resume-section-actions">
+                    <a
+                        href={RESUME_URL}
+                        download="Umesh_Anubrolu_Resume.pdf"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FDB813] text-gray-900 font-semibold hover:bg-[#e0a800]"
+                        data-test-id="resume-section-download"
+                    >
+                        <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
+                    </a>
+                    <a
+                        href={RESUME_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#FDB813] text-gray-900 font-semibold hover:bg-[#fff7e0]"
+                        data-test-id="resume-section-open"
+                    >
+                        <ExternalLink className="w-4 h-4" aria-hidden="true" /> Open in new tab
+                    </a>
+                </div>
             </div>
-            <div className="flex justify-center items-center w-full" data-test-id="resume-section-image-wrapper">
-                <img 
-                    src={resumeImg} 
-                    alt="Umesh Chowdary Anubrolu's resume" 
-                    className="w-full max-w-md h-auto object-contain rounded shadow" 
-                    style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}
-                    data-test-id="resume-section-image"
-                />
+            {/* Phones can't show a PDF inline, so they get a card; larger screens get the viewer */}
+            <div className="md:hidden flex items-center gap-3 bg-gray-100 rounded-lg p-4" data-test-id="resume-section-mobile">
+                <FileText className="w-8 h-8 text-[#FDB813] flex-shrink-0" aria-hidden="true" />
+                <p className="text-sm text-gray-700">Two-page PDF. Use the buttons above to download it or open it in your browser.</p>
             </div>
+            <object
+                data={RESUME_URL}
+                type="application/pdf"
+                aria-label="Umesh Chowdary Anubrolu's resume"
+                className="hidden md:block w-full h-[560px] rounded border"
+                data-test-id="resume-section-viewer"
+            >
+                <p className="p-4 text-sm text-gray-700">
+                    Your browser can't show the PDF here. <a href={RESUME_URL} className="underline">Download the resume</a> instead.
+                </p>
+            </object>
         </div>
-    )
-}
+    );
+};
 
 export default Resume;

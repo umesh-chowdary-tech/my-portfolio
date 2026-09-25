@@ -1,4 +1,4 @@
-import { Home, User, FileText, MessageSquare, Phone } from 'react-feather';
+import { Home, User, Code, FileText, Phone } from 'react-feather';
 import profilePic from '../images/profile-picture.jpeg'
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
@@ -13,8 +13,8 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   const navItems = [
     { name: 'home', icon: Home, label: 'HOME' },
     { name: 'about', icon: User, label: 'ABOUT ME' },
+    { name: 'projects', icon: Code, label: 'PROJECTS' },
     { name: 'resume', icon: FileText, label: 'RESUME' },
-    { name: 'testimonials', icon: MessageSquare, label: 'TESTIMONIALS' },
     { name: 'contact', icon: Phone, label: 'CONTACT' },
   ];
 
