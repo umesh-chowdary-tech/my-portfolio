@@ -43,16 +43,23 @@ Then open http://localhost:3000. Edits show up in the browser as soon as you sav
 | `npm run build` | Builds the site into `dist/` |
 | `npm run preview` | Serves the built site at http://localhost:4173/my-portfolio/, exactly as GitHub Pages will |
 | `npm run lint` | Checks the code with ESLint |
-| `npm run deploy` | Builds the site and publishes it to GitHub Pages |
+| `npm run deploy` | Builds the site and publishes it to GitHub Pages (pushing to `main` does this automatically) |
 
 ## Deploying
+
+Pushing to `main` deploys the site. The [Deploy to GitHub Pages](.github/workflows/deploy.yml) workflow lints and
+builds it, then pushes `dist/` to the `gh-pages` branch, which GitHub Pages serves. The new version is live a minute
+or two after the workflow finishes. To redeploy without a new commit, run the workflow from the repository's
+**Actions** tab.
+
+To deploy from your own computer instead, run:
 
 ```bash
 npm run deploy
 ```
 
-This builds the site and pushes `dist/` to the `gh-pages` branch, which GitHub Pages serves. The new version is live
-in a minute or two. Commit and push your source changes to `main` as well, so the code matches the live site.
+It does the same build and push, but anything not yet on `main` will go live and then be replaced by the next
+automatic deploy.
 
 GitHub Pages is a static host, so a link like `/my-portfolio/projects/` only works if a file exists at that path. After
 Vite builds the app, [`scripts/prerender-routes.js`](scripts/prerender-routes.js) writes an `index.html` for every
@@ -82,6 +89,8 @@ The menu, the routes and the build step all pick it up from there.
 ## Project structure
 
 ```
+├── .github/workflows/
+│   └── deploy.yml            # deploys the site on every push to main
 ├── index.html                # page shell: meta tags, link previews, early theme script
 ├── public/                   # copied as is: resume PDF, icons, preview image, manifest
 ├── scripts/
