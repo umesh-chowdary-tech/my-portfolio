@@ -10,7 +10,7 @@ const ContactSection = () => {
         <h2 className="text-3xl font-bold border-b pb-2">CONTACT</h2>
         <div className="max-w-md mx-auto text-center space-y-4 px-2 sm:px-4" data-test-id="contact-section-content">
           <h3 className="text-2xl font-bold text-[#FDB813]">Let's Connect & Collaborate!</h3>
-          <p className="text-gray-700 text-base">
+          <p className="text-gray-700 dark:text-gray-300 text-base">
             I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Reach out directly or connect with me on social platforms!
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-6 sm:mt-8" data-test-id="contact-section-phone-email">
@@ -22,7 +22,7 @@ const ContactSection = () => {
               <div className="w-14 h-14 rounded-full bg-[#FDB813] flex items-center justify-center group-hover:bg-[#fbbf24] transition shadow-lg">
                 <Phone className="h-7 w-7 text-white" />
               </div>
-              <span className="text-sm text-gray-700 font-medium">+91 7981589800</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">+91 7981589800</span>
             </a>
             <a
               href="mailto:jobs.umeshchowdary@gmail.com"
@@ -32,12 +32,12 @@ const ContactSection = () => {
               <div className="w-14 h-14 rounded-full bg-[#FDB813] flex items-center justify-center group-hover:bg-[#fbbf24] transition shadow-lg">
                 <Mail className="h-7 w-7 text-white" />
               </div>
-              <span className="text-sm text-gray-700 font-medium">jobs.umeshchowdary@gmail.com</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">jobs.umeshchowdary@gmail.com</span>
             </a>
           </div>
-          <div className="border-t border-gray-200 my-8"></div>
+          <div className="border-t border-gray-200 dark:border-gray-700 my-8"></div>
           <div data-test-id="contact-section-socials">
-            <p className="mb-4 text-gray-700 font-semibold">Connect with me on:</p>
+            <p className="mb-4 text-gray-700 dark:text-gray-300 font-semibold">Connect with me on:</p>
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
               <a
                 href="https://www.linkedin.com/in/umesh-chowdary-anubrolu/"
@@ -49,7 +49,7 @@ const ContactSection = () => {
                 <div className="w-14 h-14 rounded-full bg-blue-700 flex items-center justify-center group-hover:bg-blue-800 transition shadow-lg">
                   <FaLinkedin className="h-7 w-7 text-white" />
                 </div>
-                <span className="text-xs text-gray-700 font-medium">LinkedIn</span>
+                <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">LinkedIn</span>
               </a>
               <a
                 href="https://github.com/umesh-chowdary-tech"
@@ -61,7 +61,7 @@ const ContactSection = () => {
                 <div className="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-black transition shadow-lg">
                   <FaGithub className="h-7 w-7 text-white" />
                 </div>
-                <span className="text-xs text-gray-700 font-medium">GitHub</span>
+                <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">GitHub</span>
               </a>
               <a
                 href="https://x.com/UChowdary23"
@@ -73,7 +73,7 @@ const ContactSection = () => {
                 <div className="w-14 h-14 rounded-full bg-pink-500 flex items-center justify-center group-hover:bg-pink-700 transition shadow-lg">
                   <FaXTwitter className="h-7 w-7 text-white" />
                 </div>
-                <span className="text-xs text-gray-700 font-medium">Twitter (X)</span>
+                <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">Twitter (X)</span>
               </a>
             </div>
           </div>

@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  /* Native scrollbars, form controls and the PDF viewer follow the theme */
+  .dark {
+    color-scheme: dark;
+  }
+  /* Tailwind's default border is a light gray; darken it in dark mode.
+     Explicit border-color utilities still win because utilities come later. */
+  .dark *,
+  .dark ::before,
+  .dark ::after {
+    border-color: #374151;
+  }
+}
+
 @media (min-width: 768px) {
   body {
     overflow: hidden;

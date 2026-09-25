@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Umesh Chowdary Anubrolu | Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The personal portfolio of Umesh Chowdary Anubrolu, Member Technical at ADP India and Full Stack AI Engineer.
 
-## Available Scripts
+**Live site:** https://umesh-chowdary-tech.github.io/my-portfolio/
 
-In the project directory, you can run:
+## What's on the site
 
-### `npm start`
+| Page | URL | What it shows |
+|---|---|---|
+| Home | [`/`](https://umesh-chowdary-tech.github.io/my-portfolio/) | Introduction and highlights |
+| About | [`/about`](https://umesh-chowdary-tech.github.io/my-portfolio/about/) | Professional highlights, skills, awards and certifications |
+| Projects | [`/projects`](https://umesh-chowdary-tech.github.io/my-portfolio/projects/) | Work at ADP, personal projects and research |
+| Resume | [`/resume`](https://umesh-chowdary-tech.github.io/my-portfolio/resume/) | Two-page PDF to view or download |
+| Contact | [`/contact`](https://umesh-chowdary-tech.github.io/my-portfolio/contact/) | Email, phone, LinkedIn, GitHub and X |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Every page has its own link, browser-tab title and link preview. A button at the top right switches between light and
+dark themes. The site starts in the visitor's system theme and remembers their choice. It works on phones and desktops.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech stack
 
-### `npm test`
+- [React 18](https://react.dev/) with [React Router 6](https://reactrouter.com/)
+- [Vite 6](https://vite.dev/) for the dev server and build
+- [Tailwind CSS 3](https://tailwindcss.com/) for styling
+- [react-feather](https://github.com/feathericons/react-feather) and [react-icons](https://react-icons.github.io/react-icons/) for icons
+- [ESLint 9](https://eslint.org/) for linting
+- [GitHub Pages](https://pages.github.com/), published with [gh-pages](https://github.com/tschaub/gh-pages)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Run it locally
 
-### `npm run build`
+You need [Node.js](https://nodejs.org/) 20 or later.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Then open http://localhost:3000. Edits show up in the browser as soon as you save.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Command | What it does |
+|---|---|
+| `npm run dev` | Starts the dev server at http://localhost:3000 |
+| `npm run build` | Builds the site into `dist/` |
+| `npm run preview` | Serves the built site at http://localhost:4173/my-portfolio/, exactly as GitHub Pages will |
+| `npm run lint` | Checks the code with ESLint |
+| `npm run deploy` | Builds the site and publishes it to GitHub Pages |
 
-### `npm run eject`
+## Deploying
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm run deploy
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This builds the site and pushes `dist/` to the `gh-pages` branch, which GitHub Pages serves. The new version is live
+in a minute or two. Commit and push your source changes to `main` as well, so the code matches the live site.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+GitHub Pages is a static host, so a link like `/my-portfolio/projects/` only works if a file exists at that path. After
+Vite builds the app, [`scripts/prerender-routes.js`](scripts/prerender-routes.js) writes an `index.html` for every
+section, each with its own title, description and link-preview tags, plus a `404.html` that sends unknown links to the
+home page.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Updating content
 
-## Learn More
+| To change | Edit |
+|---|---|
+| Projects | [`src/data/projects.js`](src/data/projects.js) |
+| Resume | Replace [`public/Umesh_Anubrolu_Resume.pdf`](public/Umesh_Anubrolu_Resume.pdf), keeping the same file name |
+| Home page text | [`src/components/HomeSection.jsx`](src/components/HomeSection.jsx) |
+| About page text, skills and awards | [`src/components/AboutSection.jsx`](src/components/AboutSection.jsx) |
+| Contact details | [`src/components/ContactSection.jsx`](src/components/ContactSection.jsx) and the social links in [`src/components/Sidebar.jsx`](src/components/Sidebar.jsx) |
+| Page titles and link-preview descriptions | [`src/data/pages.js`](src/data/pages.js) for sections, [`index.html`](index.html) for the home page |
+| Link-preview image | [`public/og-image.png`](public/og-image.png), 1200 × 630 pixels |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Projects.** Each project has a title, category, period, description, highlights, tech list and links. Projects
+without public code leave out `links` and can set a `note` such as "Private repository". Keep every claim to something
+you can explain in an interview, and quote numbers exactly as they were measured.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Adding a section.** Add an entry to [`src/data/pages.js`](src/data/pages.js), its component to the `sections` map in
+[`src/App.jsx`](src/App.jsx) and an icon to the `icons` map in [`src/components/Sidebar.jsx`](src/components/Sidebar.jsx).
+The menu, the routes and the build step all pick it up from there.
 
-### Code Splitting
+## Project structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+├── index.html                # page shell: meta tags, link previews, early theme script
+├── public/                   # copied as is: resume PDF, icons, preview image, manifest
+├── scripts/
+│   └── prerender-routes.js   # writes a real HTML page for each section after the build
+├── src/
+│   ├── index.jsx             # entry point and router setup
+│   ├── App.jsx               # layout and routes
+│   ├── data/
+│   │   ├── pages.js          # sections: URL, menu label, title, description
+│   │   └── projects.js       # everything on the Projects page
+│   ├── components/           # one component per section, plus Sidebar and ThemeToggle
+│   └── images/               # profile photo and background
+├── firestore.rules           # database rules for the hidden Testimonials section
+└── vite.config.js
+```
 
-### Analyzing the Bundle Size
+## Testimonials (hidden for now)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+A Testimonials section, where visitors can leave a testimonial stored in Firebase Firestore, is built but not in the
+menu. The component is [`src/components/Testimonials.jsx`](src/components/Testimonials.jsx). To bring it back:
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. In the [Firebase console](https://console.firebase.google.com/), open project `my-portfolio-6312`, go to
+   **Firestore Database > Rules**, paste in [`firestore.rules`](firestore.rules) and click **Publish**. These rules let
+   visitors read and add testimonials, but not edit or delete them.
+2. Add it as a section, as described in [Adding a section](#updating-content).

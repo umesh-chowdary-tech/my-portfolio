@@ -1,7 +1,7 @@
 import React from 'react';
 import { Download, ExternalLink, FileText } from 'react-feather';
 
-const RESUME_URL = `${process.env.PUBLIC_URL}/Umesh_Anubrolu_Resume.pdf`;
+const RESUME_URL = `${import.meta.env.BASE_URL}Umesh_Anubrolu_Resume.pdf`;
 
 const Resume = () => {
     return (
@@ -12,7 +12,7 @@ const Resume = () => {
                     <a
                         href={RESUME_URL}
                         download="Umesh_Anubrolu_Resume.pdf"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FDB813] text-gray-900 font-semibold hover:bg-[#e0a800]"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FDB813] text-gray-900 dark:text-gray-100 font-semibold hover:bg-[#e0a800]"
                         data-test-id="resume-section-download"
                     >
                         <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
@@ -21,7 +21,7 @@ const Resume = () => {
                         href={RESUME_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#FDB813] text-gray-900 font-semibold hover:bg-[#fff7e0]"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#FDB813] text-gray-900 dark:text-gray-100 font-semibold hover:bg-[#fff7e0] dark:hover:bg-gray-800"
                         data-test-id="resume-section-open"
                     >
                         <ExternalLink className="w-4 h-4" aria-hidden="true" /> Open in new tab
@@ -29,9 +29,9 @@ const Resume = () => {
                 </div>
             </div>
             {/* Phones can't show a PDF inline, so they get a card; larger screens get the viewer */}
-            <div className="md:hidden flex items-center gap-3 bg-gray-100 rounded-lg p-4" data-test-id="resume-section-mobile">
+            <div className="md:hidden flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-lg p-4" data-test-id="resume-section-mobile">
                 <FileText className="w-8 h-8 text-[#FDB813] flex-shrink-0" aria-hidden="true" />
-                <p className="text-sm text-gray-700">Two-page PDF. Use the buttons above to download it or open it in your browser.</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">Two-page PDF. Use the buttons above to download it or open it in your browser.</p>
             </div>
             <object
                 data={RESUME_URL}
@@ -40,7 +40,7 @@ const Resume = () => {
                 className="hidden md:block w-full h-[560px] rounded border"
                 data-test-id="resume-section-viewer"
             >
-                <p className="p-4 text-sm text-gray-700">
+                <p className="p-4 text-sm text-gray-700 dark:text-gray-300">
                     Your browser can't show the PDF here. <a href={RESUME_URL} className="underline">Download the resume</a> instead.
                 </p>
             </object>

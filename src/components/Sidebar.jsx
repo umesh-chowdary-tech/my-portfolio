@@ -3,20 +3,18 @@ import profilePic from '../images/profile-picture.jpeg'
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import pages from '../data/pages';
 
-const Sidebar = ({ activeTab, setActiveTab }) => {
+const icons = { '/': Home, '/about': User, '/projects': Code, '/resume': FileText, '/contact': Phone };
+
+const Sidebar = () => {
   // Mobile sidebar toggle
   const [mobileOpen, setMobileOpen] = useState(false);
   // Collapsed on home for md+ screens
-  const collapsed = activeTab === 'home';
+  const collapsed = useLocation().pathname === '/';
 
-  const navItems = [
-    { name: 'home', icon: Home, label: 'HOME' },
-    { name: 'about', icon: User, label: 'ABOUT ME' },
-    { name: 'projects', icon: Code, label: 'PROJECTS' },
-    { name: 'resume', icon: FileText, label: 'RESUME' },
-    { name: 'contact', icon: Phone, label: 'CONTACT' },
-  ];
+  const navItems = pages.map((page) => ({ ...page, icon: icons[page.path] }));
 
   // Sidebar content as a function for reuse
   const sidebarContent = (
@@ -32,26 +30,26 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
         <nav className="space-y-4 w-full flex flex-col items-center">
           {navItems.map((item) => (
             <div
-              key={item.name}
+              key={item.path}
               className="relative w-full flex justify-center group"
             >
-              <button
-                className={`flex items-center justify-center md:justify-start px-2 py-2 rounded-md transition-colors w-full
-                  ${activeTab === item.name
+              <NavLink
+                to={item.path}
+                end={item.path === '/'} // exact match only for Home; the rest accept the trailing slash GitHub Pages adds
+                aria-label={item.label}
+                className={({ isActive }) => `flex items-center justify-center md:justify-start px-2 py-2 rounded-md transition-colors w-full
+                  ${isActive
                     ? 'bg-white text-[#FDB813]'
                     : 'text-white hover:bg-white/10'}
                   ${collapsed ? 'justify-center' : ''}
                 `}
-                onClick={() => {
-                  setActiveTab(item.name);
-                  setMobileOpen(false); // close sidebar on mobile after selection
-                }}
+                onClick={() => setMobileOpen(false)} // close sidebar on mobile after selection
               >
-                <item.icon className="h-5 w-5" />
+                <item.icon className="h-5 w-5" aria-hidden="true" />
                 {!collapsed && (
                   <span className="ml-2">{item.label}</span>
                 )}
-              </button>
+              </NavLink>
               {collapsed && (
                 <span
                   className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 rounded bg-black text-white text-xs opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap transition-opacity duration-200 z-10"

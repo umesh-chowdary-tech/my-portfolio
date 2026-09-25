@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FDB813" />
     <meta
@@ -10,8 +10,8 @@
       content="Umesh Chowdary Anubrolu - Member Technical at ADP India and Full Stack AI Engineer in Hyderabad, building agent platforms, RAG apps and full-stack products."
     />
     <link rel="canonical" href="https://umesh-chowdary-tech.github.io/my-portfolio/" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Link previews (LinkedIn, WhatsApp, Slack, X). These need absolute URLs. -->
     <meta property="og:type" content="website" />
@@ -55,9 +55,21 @@
     </script>
 
     <title>Umesh Chowdary Anubrolu | Full Stack AI Engineer</title>
+
+    <!-- Apply the saved (or system) theme before first paint, so dark mode never flashes white -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
   </body>
 </html>

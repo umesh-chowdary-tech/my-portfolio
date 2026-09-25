@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Layout, Camera, Target, Award, BookOpen, Users, Database, ChevronLeft, ChevronRight } from 'react-feather';
 
 const HighlightCard = ({ icon: Icon, label, value }) => (
-  <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 min-w-[90px]">
+  <div className="flex flex-col items-center bg-white dark:bg-gray-800 rounded-lg shadow p-4 min-w-[90px]">
     <Icon className="h-6 w-6 text-[#FDB813] mb-1" />
     <div className="text-xl font-bold text-[#FDB813]">{value}</div>
-    <div className="text-xs text-gray-600 text-center">{label}</div>
+    <div className="text-xs text-gray-600 dark:text-gray-400 text-center">{label}</div>
   </div>
 );
 
@@ -14,11 +14,11 @@ const Badge = ({ children }) => (
 );
 
 const InterestCard = ({ icon: Icon, title, desc }) => (
-  <div className="flex items-start bg-white p-4 rounded-lg shadow-md space-x-3">
+  <div className="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md space-x-3">
     <Icon className="h-6 w-6 text-[#FDB813] mt-1" />
     <div>
       <div className="font-semibold">{title}</div>
-      <div className="text-xs text-gray-600">{desc}</div>
+      <div className="text-xs text-gray-600 dark:text-gray-400">{desc}</div>
     </div>
   </div>
 );
@@ -40,16 +40,16 @@ const AboutSection = () => {
     <div className="flex flex-col min-h-[40vh] space-y-4" data-test-id="about-section-page1">
       <div>
         <h2 className="text-3xl font-bold mb-1">About Me</h2>
-        <p className="text-base text-gray-700 mb-1">
+        <p className="text-base text-gray-700 dark:text-gray-300 mb-1">
           Hi, I'm <span className="font-semibold text-[#FDB813]">Umesh Anubrolu</span>, a Member Technical at ADP India in Hyderabad. I build full-stack products and Gen AI systems.
         </p>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           At work I build agent platforms and full-stack tools used across ADP. In my own time I build RAG apps and fine-tune open models.
         </p>
       </div>
       <div>
         <h3 className="text-lg font-semibold flex items-center gap-2 mb-1"><Users className="inline-block" /> Professional Highlights</h3>
-        <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
+        <ul className="list-disc ml-6 text-gray-700 dark:text-gray-300 text-sm space-y-1">
           <li>Member Technical at <span className="font-semibold">ADP India</span> ({yrsOfExperience}+ yrs)</li>
           <li>Second-in-command to the Principal Architect on ADP's multi-agent AI platform, adopted by 50+ engineers</li>
           <li>Built a Jira agent that drafts tickets from Confluence and confirms with the user before creating anything</li>
@@ -80,7 +80,7 @@ const AboutSection = () => {
       </div>
       <div>
         <h3 className="text-lg font-semibold flex items-center gap-2 mb-1"><Award className="inline-block" /> Awards & Certifications</h3>
-        <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
+        <ul className="list-disc ml-6 text-gray-700 dark:text-gray-300 text-sm space-y-1">
           <li>AWS Certified AI Practitioner (2026)</li>
           <li>NPTEL certifications in Python for Data Science, Cloud Computing and DBMS</li>
           <li>iClub nomination, ADP's Highest Valued Contributor recognition</li>
@@ -106,7 +106,7 @@ const AboutSection = () => {
       {page === 0 ? page1 : page2}
       <div className="flex justify-end mt-6 gap-2">
         <button
-          className="p-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 flex items-center"
+          className="p-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 flex items-center"
           onClick={() => setPage(0)}
           disabled={page === 0}
           data-test-id="about-section-prev"

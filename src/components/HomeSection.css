@@ -34,6 +34,8 @@
 }
 
 .more-btn {
+  display: inline-block;
+  text-decoration: none;
   background-color: #ffb400;
   color: white;
   padding: 8px 16px;
@@ -49,6 +51,12 @@
 }
 .more-btn-outline:hover {
   background-color: #fff7e0;
+}
+.dark .more-btn-outline {
+  color: #f9fafb;
+}
+.dark .more-btn-outline:hover {
+  background-color: rgba(255, 180, 0, 0.12);
 }
 @media (min-width: 640px) {
   .more-btn {

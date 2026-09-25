@@ -1,12 +1,12 @@
 module.exports = {
     content: [
-      "./src/**/*.{js,jsx,ts,tsx}",
+      "./index.html",
+      "./src/**/*.{js,jsx}",
     ],
+    // Dark mode follows the `dark` class on <html>, set by the theme toggle
+    darkMode: 'class',
     theme: {
       extend: {
-        backgroundImage:{
-          'grey-wallpaper':"url('/public/images/backgroundImage.jpg')"
-        },
         colors: {
           primary: '#FDB813',
         },

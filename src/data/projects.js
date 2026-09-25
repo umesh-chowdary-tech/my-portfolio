@@ -1,9 +1,7 @@
 // Projects shown in the PROJECTS tab, grouped and in display order.
 //
-// Source of truth: Agents_Building/job-search-agent/data/master-store.yaml.
-// Same rule as there: only claims Umesh can defend in an interview, numbers
-// exactly as measured (never rounded or added), and no links to private or
-// internal work.
+// Only claims Umesh can defend in an interview: numbers exactly as measured
+// (never rounded or added), and no links to private or internal work.
 const GITHUB = 'https://github.com/umesh-chowdary-tech';
 
 const projectGroups = [

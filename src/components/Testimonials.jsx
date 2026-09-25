@@ -51,7 +51,7 @@ const TestimonialsSection = () => {
         createdAt: serverTimestamp(),
       });
       setForm({ name: '', role: '', company: '', text: '', rating: 5 });
-    } catch (err) {
+    } catch {
       setError('Sorry, your testimonial could not be sent. Please try again.');
     }
   }
